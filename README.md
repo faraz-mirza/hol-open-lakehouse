@@ -77,3 +77,5 @@ To optimize engine quality, we'll focus on three critical questions:
 ### **Getting Started with CDP and Iceberg**
 
 This runbook demonstrates how CDP empowers the "Aircraft Engine Manufacturer" to gain a competitive advantage through performance, automation, and cost control. Explore the following modules to embark on your data-driven journey.
+
+![Umami metrics](https://metrics.cloudera-labs.com/p/p6Lhs6jhy)
