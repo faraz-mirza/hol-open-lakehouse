@@ -1,7 +1,6 @@
 -- CREATE DATABASES
 CREATE DATABASE ${prefix}_airlines_csv;
 CREATE DATABASE ${prefix}_airlines;
-CREATE DATABASE ${prefix}_airlines_maint;
 
 -- CREATE CSV TABLES
 drop table if exists ${prefix}_airlines_csv.flights_csv;
@@ -92,20 +91,3 @@ INSERT INTO ${prefix}_airlines.flights_iceberg
  WHERE year IN (2005, 2006);
 
 
--- [TABLE MAINTENANCE] CREATE FLIGHTS TABLE IN ICEBERG TABLE FORMAT STORED AS PARQUET
-drop table if exists ${prefix}_airlines_maint.flights;
-
-CREATE TABLE ${prefix}_airlines_maint.flights (
- month int, dayofmonth int, 
- dayofweek int, deptime int, crsdeptime int, arrtime int, 
- crsarrtime int, uniquecarrier string, flightnum int, tailnum string, 
- actualelapsedtime int, crselapsedtime int, airtime int, arrdelay int, 
- depdelay int, origin string, dest string, distance int, taxiin int, 
- taxiout int, cancelled int, cancellationcode string, diverted string, 
- carrierdelay int, weatherdelay int, nasdelay int, securitydelay int, 
- lateaircraftdelay int
-) 
-PARTITIONED BY (year int)
-STORED AS ICEBERG 
-TBLPROPERTIES ('format-version'='2')
-;
