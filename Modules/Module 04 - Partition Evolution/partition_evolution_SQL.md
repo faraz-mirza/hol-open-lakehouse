@@ -43,7 +43,7 @@ To take advantage of the new partitioning strategy, load additional data into th
 
 ``` sql
 INSERT INTO ${prefix}_airlines.flights
-SELECT * FROM ${prefix}_airlines_csv.flights_csv
+SELECT * FROM fico_airlines_csv.flights_csv
 WHERE year = 2007;
 ```
 

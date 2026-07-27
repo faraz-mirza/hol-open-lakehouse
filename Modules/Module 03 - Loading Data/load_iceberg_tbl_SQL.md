@@ -20,7 +20,7 @@ Use the `INSERT INTO` statement to load data from a CSV file into your Iceberg t
 
 ``` sql
 INSERT INTO ${prefix}_airlines.flights
-SELECT * FROM ${prefix}_airlines_csv.flights_csv
+SELECT * FROM fico_airlines_csv.flights_csv
 WHERE year <= 2006;
 ```
 
