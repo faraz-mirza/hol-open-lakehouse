@@ -40,7 +40,7 @@ spark = SparkSession.builder \
 print("JOB STARTED...")
 
 # Run INSERT INTO Iceberg table from the raw CSV table
-spark.sql("INSERT INTO <prefix>_airlines.flights SELECT * FROM <prefix>_airlines_csv.flights_csv WHERE year = 2008")
+spark.sql("INSERT INTO <prefix>_airlines.flights SELECT * FROM fico_airlines_csv.flights_csv WHERE year = 2008")
 
 print("JOB COMPLETED.")
 
