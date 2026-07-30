@@ -93,7 +93,7 @@ If a table with the target name already exists, you may need to drop it first:
    ``` sql
    CREATE EXTERNAL TABLE ${prefix}_airlines.airports
       STORED BY ICEBERG AS
-      SELECT * FROM ${prefix}_airlines_csv.airports_csv;
+      SELECT * FROM fico_airlines_csv.airports_csv;
    ```
 
    ``` sql
