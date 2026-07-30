@@ -46,8 +46,6 @@ spark.sql("INSERT INTO <prefix>_airlines.flights SELECT * FROM fico_airlines_csv
 print("JOB COMPLETED.")
 
 ```
-Note: Because you are running interactively in CAI, SparkSession is often automatically initialized as spark. Using .getOrCreate() ensures it leverages your active session gracefully.
-
 
 Step 3: Monitor Execution in Notebook Output
 Click Run (or press Shift + Enter) to execute the cell.
