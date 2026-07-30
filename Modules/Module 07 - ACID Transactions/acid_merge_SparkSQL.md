@@ -43,13 +43,13 @@ In this submodule, we will demonstrate how to perform an ACID `MERGE` operation 
     # Replace <prefix> with your user ID in the following code
 
     # Query Raw Data Table
-    spark.sql("SELECT * FROM ${prefix}_airlines_csv.airlines_csv limit 5").show()
+    spark.sql("SELECT * FROM fico_airlines_csv.airlines_csv limit 5").show()
 
     # Create Iceberg Table
     spark.sql("CREATE EXTERNAL TABLE ${prefix}_airlines.airlines (code string, description string) USING ICEBERG TBLPROPERTIES ('format-version' = '2')")
 
     # Load Data into Iceberg Table
-    spark.sql("INSERT INTO ${prefix}_airlines.airlines SELECT * FROM ${prefix}_airlines_csv.airlines_csv")
+    spark.sql("INSERT INTO ${prefix}_airlines.airlines SELECT * FROM fico_airlines_csv.airlines_csv")
 
     # Review Results to ensure record was updated
     spark.sql("SELECT * FROM ${prefix}_airlines.airlines WHERE code ='UA'").show()
