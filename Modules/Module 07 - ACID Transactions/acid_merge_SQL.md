@@ -24,7 +24,7 @@ TBLPROPERTIES ('format-version' = '2', 'external.table.purge'='true')
 
 -- Load Data into Iceberg Table
 INSERT INTO ${prefix}_airlines.airlines 
-SELECT * FROM ${prefix}_airlines_csv.airlines_csv;
+SELECT * FROM fico_airlines_csv.airlines_csv;
 
 -- Review Results to ensure the record was updated
 SELECT *
@@ -48,9 +48,9 @@ Run the following SQL `MERGE` command to insert, update, and delete records into
 
 MERGE INTO ${prefix}_airlines.airlines AS t
   USING (
-  SELECT * FROM ${prefix}_airlines_csv.airlines_csv
+  SELECT * FROM fico_airlines_csv.airlines_csv
   UNION
-  SELECT "Z999" AS code, "Adrenaline Airways" AS description FROM ${prefix}_airlines_csv.airlines_csv a WHERE a.code = "UA"
+  SELECT "Z999" AS code, "Adrenaline Airways" AS description FROM fico_airlines_csv.airlines_csv a WHERE a.code = "UA"
   ) s ON t.code = s.code
 WHEN MATCHED AND t.code = "04Q" THEN DELETE
 WHEN MATCHED AND t.code = "05Q" THEN UPDATE SET description = "Comlux Aviation"
