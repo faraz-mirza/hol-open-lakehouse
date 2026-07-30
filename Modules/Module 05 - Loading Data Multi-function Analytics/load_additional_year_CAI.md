@@ -24,15 +24,16 @@ Step 2: Execute the PySpark Ingestion Code
 In your Jupyter Notebook cell, run the following PySpark code. Make sure to replace <prefix> with your assigned user ID.
 
 ```Python
-from pyspark.sql import SparkSession
-import pyspark.sql.functions as F
+import cml.data_v1 as cmldata
 
-#---------------------------------------------------
-# CREATE / GET SPARK SESSION
-#---------------------------------------------------
-spark = SparkSession.builder \
-    .appName('<prefix>-IcebergAdd2008') \
-    .getOrCreate()
+CONNECTION_NAME = "fico-aw-dl"
+conn = cmldata.get_connection(CONNECTION_NAME)
+spark = conn.get_spark_session()
+
+# Sample usage to run query through spark
+EXAMPLE_SQL_QUERY = "show databases"
+spark.sql(EXAMPLE_SQL_QUERY).show()
+
 
 #-----------------------------------------------------------------------------------
 # LOAD DATA (2008) FROM RAW CSV TABLE INTO ICEBERG TABLE
